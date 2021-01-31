@@ -23,8 +23,6 @@ VCR.configure do |config|
 
   config.filter_sensitive_data('<OAUTH_SETTINGS>') do |interaction|
     auths = interaction.request.headers['Authorization'].first
-    if (match = auths.match /^OAuth.*/ )
-      auths
-    end
+    auths if auths.match(/^OAuth.*/)
   end
 end
