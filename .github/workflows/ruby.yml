@@ -28,6 +28,8 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Move dummy configuration file
+      run: mv config/application_example.yml config/application.yml
     - name: Run rubocop
       run: bundle exec rubocop
     - name: Run tests
