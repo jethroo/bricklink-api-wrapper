@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'bricklink/api'
+require 'bricklink_api_wrapper/user_inventory'
 require 'json'
 
 module Net
@@ -12,5 +13,5 @@ module Net
   end
 end
 
-module BricklinkApiWraoper
+module BricklinkApiWrapper
 end

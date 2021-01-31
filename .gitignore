@@ -18,3 +18,5 @@
 /**/.DS_Store
 
 /vendor/*
+
+.rspec_status

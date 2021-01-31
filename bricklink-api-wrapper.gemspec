@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Carsten Wirth']
   spec.email         = ['carsten.wirth@clock-work-coder.com']
 
-  spec.summary       = 'Finds minifigures in bricklink inventories.'
+  spec.summary       = 'A ruby based bricklink API wrapper'
   spec.homepage      = 'http://www.clock-work-coder.com'
   spec.required_ruby_version = Gem::Requirement.new('>= 2.5.0')
 
