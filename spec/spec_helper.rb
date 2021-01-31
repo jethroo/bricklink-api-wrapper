@@ -25,4 +25,14 @@ VCR.configure do |config|
     auths = interaction.request.headers['Authorization'].first
     auths if auths.match(/^OAuth.*/)
   end
+
+  config.filter_sensitive_data('<COOKIE_1>') do |interaction|
+    cookie = interaction.response.headers['Set-Cookie'].first
+    cookie if cookie
+  end
+
+  config.filter_sensitive_data('<COOKIE_2>') do |interaction|
+    cookie = interaction.response.headers['Set-Cookie'].last
+    cookie if cookie
+  end
 end
