@@ -28,11 +28,11 @@ VCR.configure do |config|
 
   config.filter_sensitive_data('<COOKIE_1>') do |interaction|
     cookie = interaction.response.headers['Set-Cookie'].first
-    cookie if cookie
+    cookie
   end
 
   config.filter_sensitive_data('<COOKIE_2>') do |interaction|
     cookie = interaction.response.headers['Set-Cookie'].last
-    cookie if cookie
+    cookie
   end
 end
