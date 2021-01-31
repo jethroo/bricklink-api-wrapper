@@ -14,14 +14,14 @@ http_interactions:
       User-Agent:
       - OAuth gem v0.5.5
       Authorization:
-      - OAuth <oauth_headers>
+      - "<OAUTH_SETTINGS>"
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Sun, 31 Jan 2021 21:19:40 GMT
+      - Sun, 31 Jan 2021 22:20:51 GMT
       Content-Type:
       - text/html;charset=utf-8
       Transfer-Encoding:
@@ -41,5 +41,5 @@ http_interactions:
         Applicable)","quantity":3,"new_or_used":"N","completeness":"S","unit_price":"3.5000","bind_id":0,"description":"<a
         href=\"https://store.bricklink.com/jethroo&utm_content=globalnav#/splash\"><img
         alt=\"warning\" src=\"https://www.clock-work-coder.com/w3.svg\"></a>","bulk":1,"is_retain":false,"is_stock_room":false,"date_created":"2020-11-14T05:00:00.000Z","my_cost":"0.0000","sale_rate":0,"tier_quantity1":0,"tier_price1":"0.0000","tier_quantity2":0,"tier_price2":"0.0000","tier_quantity3":0,"tier_price3":"0.0000","my_weight":"0.0000"}}'
-  recorded_at: Sun, 31 Jan 2021 21:19:40 GMT
+  recorded_at: Sun, 31 Jan 2021 22:20:51 GMT
 recorded_with: VCR 6.0.0
