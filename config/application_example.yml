@@ -1,0 +1,4 @@
+consumer_key: your-key
+consumer_secret: your-secret
+token: your-token
+token_secret: your-token-secret
