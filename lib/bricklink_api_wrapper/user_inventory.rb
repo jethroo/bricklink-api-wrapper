@@ -4,6 +4,15 @@ module BricklinkApiWrapper
   class UserInventory
     BASE_PATH = '/inventories'
 
+    STATUS = {
+      available: 'Y',
+      stockroom_a: 'S',
+      stockroom_b: 'B',
+      stockroom_c: 'C',
+      unavailable: 'N',
+      reserved: 'R'
+    }.freeze
+
     attr_reader :data
 
     def initialize(data)
@@ -14,23 +23,25 @@ module BricklinkApiWrapper
       net_http_response = Bricklink::Api.new.access_token.get("#{BASE_PATH}/#{id}")
       return unless net_http_response.code.to_i == 200
 
-      json_body = JSON.parse(net_http_response.body)
+      payload = JSON.parse(net_http_response.body, object_class: OpenStruct)
 
-      return unless json_body['meta']['code'] == 200
+      return unless payload.meta.code == 200
 
-      new(json_body['data'])
+      new(payload.data)
     end
 
-    def self.index(params = { status: 'S' })
-      param_string = URI.encode_www_form(params).empty? ? '' : "?#{URI.encode_www_form(params)}"
-      net_http_response = Bricklink::Api.new.access_token.get("#{BASE_PATH}#{param_string}")
+    def self.index(params = { status: STATUS[:stockroom_a] })
+      supported_params = params.slice(:item_type, :status, :category_id, :color_id)
+      query_string = supported_params.empty? ? '' : "?#{URI.encode_www_form(supported_params)}"
+
+      net_http_response = Bricklink::Api.new.access_token.get("#{BASE_PATH}#{query_string}")
       return unless net_http_response.code.to_i == 200
 
-      json_body = JSON.parse(net_http_response.body)
+      payload = JSON.parse(net_http_response.body, object_class: OpenStruct)
 
-      return unless json_body['meta']['code'] == 200
+      return unless payload.meta.code == 200
 
-      json_body['data'].map { |inv_data| new(inv_data) }
+      payload.data.map { |inv_data| new(inv_data) }
     end
   end
 end
