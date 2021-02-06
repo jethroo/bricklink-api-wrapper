@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.bricklink.com/api/store/v1/inventories?item_type=-SET&status=S
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - OAuth gem v0.5.5
+      Authorization:
+      - "<OAUTH_SETTINGS>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 06 Feb 2021 17:49:41 GMT
+      Content-Type:
+      - text/html;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - "<COOKIE_1>"
+      - "<COOKIE_2>"
+      Server:
+      - BrickLink
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - no-referrer-when-downgrade
+    body:
+      encoding: ASCII-8BIT
+      string: '{"meta":{"description":"OK","message":"OK","code":200},"data":[{"inventory_id":158549605,"item":{"no":"2958pb024","name":"Technic,
+        Disk 3 x 3 with Disk Brake Silver / Black Stylized Star Pattern (Sticker)
+        - Set 8370","type":"PART","category_id":638},"color_id":11,"color_name":"Black","quantity":3,"new_or_used":"U","unit_price":"0.1200","bind_id":0,"description":"<a
+        href=\"https://store.bricklink.com/jethroo&utm_content=globalnav#/splash\"><img
+        alt=\"warning\" src=\"https://www.clock-work-coder.com/w3.svg\"></a>","remarks":"ubox3","bulk":1,"is_retain":false,"is_stock_room":true,"stock_room_id":"A","date_created":"2018-12-02T05:00:00.000Z","my_cost":"0.0000","sale_rate":0,"tier_quantity1":0,"tier_price1":"0.0000","tier_quantity2":0,"tier_price2":"0.0000","tier_quantity3":0,"tier_price3":"0.0000","my_weight":"0.0000"},{"inventory_id":35027011,"item":{"no":"87619","name":"Train
+        Front Sloping Base with 4 Studs","type":"PART","category_id":124},"color_id":85,"color_name":"Dark
+        Bluish Gray","quantity":1,"new_or_used":"N","unit_price":"0.7250","bind_id":0,"description":"Preisangabe
+        zzgl. <a href=\"https://store.bricklink.com/jethroo&utm_content=globalnav#/splash\">Versandkosten</a>","remarks":"new-013","bulk":1,"is_retain":false,"is_stock_room":true,"stock_room_id":"A","date_created":"2012-07-22T04:00:00.000Z","my_cost":"0.0000","sale_rate":0,"tier_quantity1":0,"tier_price1":"0.0000","tier_quantity2":0,"tier_price2":"0.0000","tier_quantity3":0,"tier_price3":"0.0000","my_weight":"0.0000"}]}'
+  recorded_at: Sat, 06 Feb 2021 17:49:41 GMT
+recorded_with: VCR 6.0.0

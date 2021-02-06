@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
+require 'forwardable'
+
 module BricklinkApiWrapper
   class UserInventory
+    extend Forwardable
+
     BASE_PATH = '/inventories'
 
     STATUS = {
@@ -13,7 +17,13 @@ module BricklinkApiWrapper
       reserved: 'R'
     }.freeze
 
-    attr_reader :data
+    def_delegators :@data, :inventory_id, :item, :color_id,
+                   :color_name, :quantity, :new_or_used, :unit_price,
+                   :bind_id, :description, :remarks, :bulk,
+                   :is_retain, :is_stock_room, :stock_room_id,
+                   :date_created, :my_cost, :sale_rate, :tier_quantity1,
+                   :tier_price1, :tier_quantity2, :tier_price2,
+                   :tier_price3, :tier_quantity3, :my_weight
 
     def initialize(data)
       @data = data
