@@ -1,5 +1,10 @@
 # frozen_string_literal: true
 
+require 'simplecov'
+SimpleCov.start
+SimpleCov.add_filter 'spec/'
+SimpleCov.minimum_coverage 100
+
 require 'bundler/setup'
 require 'bricklink_api_wrapper'
 
