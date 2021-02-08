@@ -1,0 +1,95 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.bricklink.com/api/store/v1/inventories/202746732
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - OAuth gem v0.5.5
+      Authorization:
+      - "<OAUTH_SETTINGS>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 08 Feb 2021 20:08:05 GMT
+      Content-Type:
+      - text/html;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - "<COOKIE_1>"
+      - "<COOKIE_2>"
+      Server:
+      - BrickLink
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - no-referrer-when-downgrade
+    body:
+      encoding: ASCII-8BIT
+      string: '{"meta":{"description":"OK","message":"OK","code":200},"data":{"inventory_id":202746732,"item":{"no":"7657-1","name":"AT-ST","type":"SET","category_id":65},"color_id":0,"color_name":"(Not
+        Applicable)","quantity":1,"new_or_used":"U","completeness":"C","unit_price":"43.0000","bind_id":0,"description":"<strong>NO
+        extra parts, NO box</strong> <a href=\"https://store.bricklink.com/jethroo&utm_content=globalnav#/splash\"><img
+        alt=\"warning\" src=\"https://www.clock-work-coder.com/w3.svg\"></a>","remarks":"test","bulk":1,"is_retain":false,"is_stock_room":true,"stock_room_id":"A","date_created":"2020-05-07T04:00:00.000Z","my_cost":"0.0000","sale_rate":0,"tier_quantity1":0,"tier_price1":"0.0000","tier_quantity2":0,"tier_price2":"0.0000","tier_quantity3":0,"tier_price3":"0.0000","my_weight":"0.0000"}}'
+  recorded_at: Mon, 08 Feb 2021 20:08:05 GMT
+- request:
+    method: put
+    uri: https://api.bricklink.com/api/store/v1/inventories/202746732
+    body:
+      encoding: UTF-8
+      string: '{"quantity":"+1","unit_price":"45.000","remarks":"price updated"}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - OAuth gem v0.5.5
+      Content-Length:
+      - '65'
+      Authorization:
+      - "<OAUTH_SETTINGS>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 08 Feb 2021 20:08:06 GMT
+      Content-Type:
+      - text/html;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - "<COOKIE_1>"
+      - "<COOKIE_2>"
+      Server:
+      - BrickLink
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - no-referrer-when-downgrade
+    body:
+      encoding: ASCII-8BIT
+      string: '{"meta":{"description":"OK","message":"OK","code":200},"data":{"inventory_id":202746732,"item":{"no":"7657-1","name":"AT-ST","type":"SET","category_id":65},"color_id":0,"quantity":2,"new_or_used":"U","completeness":"C","unit_price":"45.0000","bind_id":0,"description":"<strong>NO
+        extra parts, NO box</strong> <a href=\"https://store.bricklink.com/jethroo&utm_content=globalnav#/splash\"><img
+        alt=\"warning\" src=\"https://www.clock-work-coder.com/w3.svg\"></a>","remarks":"price
+        updated","bulk":1,"is_retain":false,"is_stock_room":true,"stock_room_id":"A","date_created":"2020-05-07T04:00:00.000Z","my_cost":"0.0000","sale_rate":0,"tier_quantity1":0,"tier_price1":"0.0000","tier_quantity2":0,"tier_price2":"0.0000","tier_quantity3":0,"tier_price3":"0.0000","my_weight":"0.0000"}}'
+  recorded_at: Mon, 08 Feb 2021 20:08:06 GMT
+recorded_with: VCR 6.0.0

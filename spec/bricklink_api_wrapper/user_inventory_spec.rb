@@ -13,6 +13,30 @@ RSpec.describe BricklinkApiWrapper::UserInventory do
     end
   end
 
+  describe '#update' do
+    describe 'when update is successful' do
+      it 'returns true and updates the inventory data' do
+        VCR.use_cassette('update_user_inventory_successfully') do
+          inventory = described_class.get(202_746_732)
+
+          expect(inventory.inventory_id).to eq(202_746_732)
+          expect(inventory.remarks).to eq('test')
+
+          update_result = inventory.update(
+            remarks: 'price updated',
+            quantity: '+1',
+            unit_price: '45.000'
+          )
+
+          expect(update_result).to be_truthy
+          expect(inventory.remarks).to eq('price updated')
+          expect(inventory.quantity).to eq(2)
+          expect(inventory.unit_price).to eq('45.0000')
+        end
+      end
+    end
+  end
+
   describe '.index' do
     context 'when call is successful' do
       it 'returns matching inventories' do

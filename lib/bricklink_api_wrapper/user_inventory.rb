@@ -29,25 +29,69 @@ module BricklinkApiWrapper
       @data = data
     end
 
-    def self.get(id)
-      net_http_response = Bricklink::Api.new.access_token.get("#{BASE_PATH}/#{id}")
-      return unless net_http_response.code.to_i == 200
+    SUPPORTED_UPDATE_PARAMS = %i[
+      quantity
+      unit_price
+      description
+      remarks
+      bulk
+      is_retain
+      is_stock_room
+      stock_room_id
+      my_cost
+      sale_rate
+      tier_quantity1
+      tier_price1
+      tier_quantity2
+      tier_price2
+      tier_quantity3
+      tier_price3
+    ].freeze
 
-      payload = JSON.parse(net_http_response.body, object_class: OpenStruct)
+    def update(params = {})
+      supported_params = params.slice(*SUPPORTED_UPDATE_PARAMS)
+      return false unless supported_params.any?
+
+      api_response = Bricklink::Api.new.access_token.put(
+        "#{BASE_PATH}/#{inventory_id}", supported_params.to_json,
+        { 'Content-Type' => 'application/json' }
+      )
+
+      return false unless api_response.code.to_i == 200
+
+      payload = JSON.parse(api_response.body, object_class: OpenStruct)
+
+      return false unless payload.meta.code == 200
+
+      @data = payload.data
+    end
+
+    def self.get(id)
+      api_response = Bricklink::Api.new.access_token.get("#{BASE_PATH}/#{id}")
+      return unless api_response.code.to_i == 200
+
+      payload = JSON.parse(api_response.body, object_class: OpenStruct)
 
       return unless payload.meta.code == 200
 
       new(payload.data)
     end
 
+    SUPPORTED_INDEX_PARAMS = %i[
+      item_type
+      status
+      category_id
+      color_id
+    ].freeze
+
     def self.index(params = { status: STATUS[:stockroom_a] })
-      supported_params = params.slice(:item_type, :status, :category_id, :color_id)
+      supported_params = params.slice(*SUPPORTED_INDEX_PARAMS)
       query_string = supported_params.empty? ? '' : "?#{URI.encode_www_form(supported_params)}"
 
-      net_http_response = Bricklink::Api.new.access_token.get("#{BASE_PATH}#{query_string}")
-      return unless net_http_response.code.to_i == 200
+      api_response = Bricklink::Api.new.access_token.get("#{BASE_PATH}#{query_string}")
+      return unless api_response.code.to_i == 200
 
-      payload = JSON.parse(net_http_response.body, object_class: OpenStruct)
+      payload = JSON.parse(api_response.body, object_class: OpenStruct)
 
       return unless payload.meta.code == 200
 
