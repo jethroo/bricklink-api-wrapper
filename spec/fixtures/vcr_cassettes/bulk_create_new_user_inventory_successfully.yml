@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.bricklink.com/api/store/v1/inventories
+    body:
+      encoding: UTF-8
+      string: '[{"item":{"no":"7657-1","type":"SET"},"is_stock_room":true,"color_id":0,"quantity":1,"unit_price":"50","new_or_used":"U","completeness":"C","is_retain":false,"remarks":"created_via_test"},{"item":{"no":"3001","type":"PART"},"is_stock_room":true,"color_id":0,"quantity":1,"unit_price":"50","new_or_used":"U","completeness":"C","is_retain":false,"remarks":"created_via_test"}]'
+    headers:
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - OAuth gem v0.5.5
+      Content-Length:
+      - '374'
+      Authorization:
+      - "<OAUTH_SETTINGS>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 09 Feb 2021 20:22:11 GMT
+      Content-Type:
+      - text/html;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - "<COOKIE_1>"
+      - "<COOKIE_2>"
+      Server:
+      - BrickLink
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - no-referrer-when-downgrade
+    body:
+      encoding: ASCII-8BIT
+      string: '{"meta":{"description":"OK_CREATED","message":"OK_CREATED","code":201}}'
+  recorded_at: Tue, 09 Feb 2021 20:22:11 GMT
+recorded_with: VCR 6.0.0

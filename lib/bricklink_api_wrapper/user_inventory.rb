@@ -97,5 +97,63 @@ module BricklinkApiWrapper
 
       payload.data.map { |inv_data| new(inv_data) }
     end
+
+    SUPPORTED_CREATE_PARAMS = %i[
+      item
+      color_id
+      quantity
+      unit_price
+      new_or_used
+      completeness
+      description
+      remarks
+      bulk
+      is_retain
+      is_stock_room
+      stock_room_id
+      my_cost
+      sale_rate
+      tier_quantity1
+      tier_price1
+      tier_quantity2
+      tier_price2
+      tier_quantity3
+      tier_price3
+    ].freeze
+
+    def self.create(params = {})
+      supported_params = params.slice(*SUPPORTED_CREATE_PARAMS)
+      return false unless supported_params.any?
+
+      api_response = Bricklink::Api.new.access_token.post(
+        BASE_PATH.to_s, supported_params.to_json,
+        { 'Content-Type' => 'application/json' }
+      )
+
+      return false unless api_response.code.to_i == 200
+
+      payload = JSON.parse(api_response.body, object_class: OpenStruct)
+
+      return false unless payload.meta.code == 201
+
+      new(payload.data)
+    end
+
+    # API will give back an error on provided stock_room_id
+    # for items with is_stock_room: true
+    # they will be put in stockroom A !
+    def self.bulk_create(inventories = [])
+      return false unless inventories.any?
+
+      api_response = Bricklink::Api.new.access_token.post(
+        BASE_PATH.to_s, inventories.to_json,
+        { 'Content-Type' => 'application/json' }
+      )
+      return false unless api_response.code.to_i == 200
+
+      payload = JSON.parse(api_response.body, object_class: OpenStruct)
+
+      payload.meta.code == 201
+    end
   end
 end

@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.bricklink.com/api/store/v1/inventories
+    body:
+      encoding: UTF-8
+      string: '{"item":{"no":"7657-1","type":"SET"},"color_id":0,"quantity":1,"unit_price":"50","new_or_used":"U","completeness":"C","remarks":"created_via_test","is_retain":false,"is_stock_room":true}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - OAuth gem v0.5.5
+      Content-Length:
+      - '186'
+      Authorization:
+      - "<OAUTH_SETTINGS>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 09 Feb 2021 20:16:48 GMT
+      Content-Type:
+      - text/html;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - "<COOKIE_1>"
+      - "<COOKIE_2>"
+      Server:
+      - BrickLink
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - no-referrer-when-downgrade
+    body:
+      encoding: ASCII-8BIT
+      string: '{"meta":{"description":"OK_CREATED","message":"OK_CREATED","code":201},"data":{"inventory_id":235429021,"item":{"no":"7657-1","name":"AT-ST","type":"SET","category_id":65},"color_id":0,"quantity":1,"new_or_used":"U","completeness":"C","unit_price":"50.0000","bind_id":0,"description":"","remarks":"created_via_test","bulk":1,"is_retain":false,"is_stock_room":true,"stock_room_id":"A","date_created":"2021-02-09T20:17:00.000Z","my_cost":"0.0000","sale_rate":0,"tier_quantity1":0,"tier_price1":"0.0000","tier_quantity2":0,"tier_price2":"0.0000","tier_quantity3":0,"tier_price3":"0.0000","my_weight":"0.0000"}}'
+  recorded_at: Tue, 09 Feb 2021 20:16:48 GMT
+recorded_with: VCR 6.0.0
