@@ -27,10 +27,7 @@ module BricklinkApiWrapper
       supported_params = params.slice(*SUPPORTED_INDEX_PARAMS)
       query_string = supported_params.empty? ? '' : "?#{URI.encode_www_form(supported_params)}"
 
-      api_response = Bricklink::Api.new.access_token.get("#{BASE_PATH}#{query_string}")
-      return unless api_response.code.to_i == 200
-
-      payload = JSON.parse(api_response.body, object_class: OpenStruct)
+      payload = Bricklink::Api.new.get("#{BASE_PATH}#{query_string}")
 
       return unless payload.meta.code == 200
 

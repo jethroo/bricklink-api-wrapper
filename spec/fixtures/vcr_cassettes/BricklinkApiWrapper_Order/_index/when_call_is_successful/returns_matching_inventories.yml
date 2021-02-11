@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.bricklink.com/api/store/v1/orders
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - OAuth gem v0.5.5
+      Authorization:
+      - "<OAUTH_SETTINGS>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 11 Feb 2021 21:09:32 GMT
+      Content-Type:
+      - text/html;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - "<COOKIE_1>"
+      - "<COOKIE_2>"
+      Server:
+      - BrickLink
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - no-referrer-when-downgrade
+    body:
+      encoding: ASCII-8BIT
+      string: '{"meta":{"description":"OK","message":"OK","code":200},"data":[{"order_id":2623649,"date_ordered":"2012-02-09T21:04:25.587Z","date_status_changed":"2012-02-15T07:46:52.000Z","seller_name":"jethroo","store_name":"sum-of-its-parts","buyer_name":"buyer1","status":"PURGED","total_count":56,"unique_count":14,"is_filed":false,"salesTax_collected_by_bl":false,"payment":{"method":"Bank
+        Transfer","currency_code":"EUR","date_paid":"2012-02-13T19:35:30.000Z","status":"Completed"},"cost":{"currency_code":"EUR","subtotal":"4.5160","grand_total":"7.0160","final_total":"7.0160"},"disp_cost":{"currency_code":"EUR","subtotal":"4.5160","grand_total":"7.0200","final_total":"7.0200"}},
+        {"order_id":2633919,"date_ordered":"2012-02-14T10:31:33.207Z","date_status_changed":"2012-02-16T07:42:28.000Z","seller_name":"jethroo","store_name":"sum-of-its-parts","buyer_name":"buyer2","status":"PURGED","total_count":28,"unique_count":8,"is_filed":false,"salesTax_collected_by_bl":false,"payment":{"method":"Bank
+        Transfer","currency_code":"EUR","date_paid":"2012-02-15T18:43:23.000Z","status":"Completed"},"cost":{"currency_code":"EUR","subtotal":"4.6190","grand_total":"6.4190","final_total":"6.4190"},"disp_cost":{"currency_code":"EUR","subtotal":"4.6190","grand_total":"6.4200","final_total":"6.4200"}}]}'
+  recorded_at: Thu, 11 Feb 2021 21:09:32 GMT
+recorded_with: VCR 6.0.0

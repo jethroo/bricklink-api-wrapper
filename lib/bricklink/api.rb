@@ -1,25 +1,59 @@
 # frozen_string_literal: true
 
 require 'oauth'
-require 'yaml'
 
 module Bricklink
-  class Config
-    AUTH_PARAMS = %w[consumer_key consumer_secret token token_secret].freeze
-
-    def self.file
-      YAML.load_file('config/application.yml')
-    end
-
-    AUTH_PARAMS.each do |param|
-      define_singleton_method(param) do
-        file[param]
-      end
-    end
-  end
-
   class Api
     BASE_URL = 'https://api.bricklink.com/api/store/v1'
+    CONTENT_TYPE_HEADER = { 'Content-Type' => 'application/json' }.freeze
+
+    class RequestError < StandardError
+      attr_reader :api_response
+
+      def initialize(message, api_response)
+        super(message)
+        @api_response = api_response
+      end
+    end
+
+    def get(path)
+      api_response = access_token.get(path)
+
+      if api_response.code.to_i == 200
+        JSON.parse(api_response.body, object_class: OpenStruct)
+      else
+        raise RequestError.new(
+          "Expected status code 200 but got #{api_response.code}",
+          api_response
+        )
+      end
+    end
+
+    def put(path, params)
+      api_response = access_token.put(path, params.to_json, CONTENT_TYPE_HEADER)
+
+      if api_response.code.to_i == 200
+        JSON.parse(api_response.body, object_class: OpenStruct)
+      else
+        raise RequestError.new(
+          "Expected status code 200 but got #{api_response.code}",
+          api_response
+        )
+      end
+    end
+
+    def post(path, params)
+      api_response = access_token.post(path, params.to_json, CONTENT_TYPE_HEADER)
+
+      if api_response.code.to_i == 200
+        JSON.parse(api_response.body, object_class: OpenStruct)
+      else
+        raise RequestError.new(
+          "Expected status code 200 but got #{api_response.code}",
+          api_response
+        )
+      end
+    end
 
     def consumer
       @consumer ||= OAuth::Consumer.new(

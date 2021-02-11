@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'bricklink/config'
 require 'bricklink/api'
 require 'bricklink_api_wrapper/order'
 require 'bricklink_api_wrapper/user_inventory'
