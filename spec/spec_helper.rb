@@ -7,6 +7,7 @@ SimpleCov.minimum_coverage 100
 
 require 'bundler/setup'
 require 'bricklink_api_wrapper'
+require 'byebug'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -40,5 +41,9 @@ VCR.configure do |config|
   config.filter_sensitive_data('<COOKIE_2>') do |interaction|
     cookie = interaction.response.headers['Set-Cookie'].last
     cookie
+  end
+
+  config.before_record do |i|
+    i.response.body.force_encoding('UTF-8')
   end
 end

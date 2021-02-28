@@ -13,6 +13,8 @@ module BricklinkApiWrapper
                    :total_count, :unique_count, :is_filed,
                    :salesTax_collected_by_bl, :payment, :cost, :disp_cost
 
+    alias id order_id
+
     def initialize(data)
       @data = data
     end
@@ -32,6 +34,22 @@ module BricklinkApiWrapper
       return unless payload.meta.code == 200
 
       payload.data.map { |order_data| new(order_data) }
+    end
+
+    def self.get(id)
+      payload = Bricklink::Api.new.get("#{BASE_PATH}/#{id}")
+      return unless payload.meta.code == 200
+
+      new(payload.data)
+    end
+
+    def items
+      return @items if @items
+
+      payload = Bricklink::Api.new.get("#{BASE_PATH}/#{id}/items")
+      return unless payload.meta.code == 200
+
+      @items = payload.data.flatten # ignore batches for now
     end
   end
 end

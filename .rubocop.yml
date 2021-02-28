@@ -14,3 +14,7 @@ Metrics/BlockLength:
 Metrics/ClassLength:
   Exclude:
     - 'lib/bricklink_api_wrapper/user_inventory.rb'
+
+Style/NumericLiterals:
+  Exclude:
+    - 'spec/**/*'

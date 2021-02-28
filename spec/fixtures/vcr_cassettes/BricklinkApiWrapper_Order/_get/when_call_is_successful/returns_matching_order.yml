@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.bricklink.com/api/store/v1/orders/15646315
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - OAuth gem v0.5.5
+      Authorization:
+      - "<OAUTH_SETTINGS>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 28 Feb 2021 19:40:46 GMT
+      Content-Type:
+      - text/html;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - "<COOKIE_1>"
+      - "<COOKIE_2>"
+      Server:
+      - BrickLink
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - no-referrer-when-downgrade
+    body:
+      encoding: UTF-8
+      string: '{"meta":{"description":"OK","message":"OK","code":200},"data":{"order_id":15646315,"date_ordered":"2021-02-28T10:11:21.703Z","date_status_changed":"2021-02-28T10:11:21.703Z","seller_name":"jethroo","store_name":"sum-of-its-parts","buyer_name":"buyer","buyer_email":"buyer@mail.de
+        ","require_insurance":false,"status":"READY","is_invoiced":true,"total_count":89,"unique_count":33,"total_weight":"61.96","buyer_order_count":1,"is_filed":false,"drive_thru_sent":false,"salesTax_collected_by_bl":false,"payment":{"method":"IBAN","currency_code":"EUR","status":"None"},"shipping":{"method_id":116410,"method":"Deutche
+        Post - Oversize Letter","address":{"name":{"full":"A Buyer","first":"A","last":"Buyer"},"full":"Buyer Street 11 123Zip Town","address1":"Buyer Street Nr.","address2":"","country_code":"DE","city":"Town","state":"State","postal_code":"12345"}},"cost":{"currency_code":"EUR","subtotal":"13.6290","grand_total":"16.3290","etc1":"0.0000","etc2":"0.0000","insurance":"0.0000","shipping":"2.7000","credit":"0.0000","coupon":"0.0000","salesTax":"0.0000","final_total":"16.3290","vat_rate":"0.00","vat_amount":"0.0000"},"disp_cost":{"currency_code":"EUR","subtotal":"13.6290","grand_total":"16.3300","etc1":"0.0000","etc2":"0.0000","insurance":"0.0000","shipping":"2.7000","credit":"0.0000","coupon":"0.0000","final_total":"16.3300","vat_rate":"0.00","vat_amount":"0.0000"}}}'
+  recorded_at: Sun, 28 Feb 2021 19:40:46 GMT
+recorded_with: VCR 6.0.0
