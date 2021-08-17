@@ -45,7 +45,7 @@ RSpec.describe BricklinkApiWrapper::UserInventory do
       end
 
       context 'when filtering out sets' do
-        it 'returns the only parts when excluding set inventories',
+        it 'returns only the parts when excluding set inventories',
            vcr: { cassette_name: 'get_user_inventories_with_items_excluded' } do
           inventories = described_class.index(item_type: '-SET', status: 'S')
 
@@ -53,7 +53,7 @@ RSpec.describe BricklinkApiWrapper::UserInventory do
           expect(inventories.map(&:item).map(&:type).uniq).to eq(['PART'])
         end
 
-        it 'returns the only sets when including set inventories only',
+        it 'returns only the sets when including set inventories only',
            vcr: { cassette_name: 'get_user_inventories_with_items_included' } do
           inventories = described_class.index(item_type: 'SET', status: 'S')
 
